@@ -38,7 +38,10 @@ jobs:
             - [ ] The linting and formatting workflow within the [PR checks](https://github.com/scribe-org/Scribe-Data/pull/${{ github.event.pull_request.number }}/checks) do not indicate new errors in the files changed
 
             - [ ] The [CHANGELOG](https://github.com/scribe-org/Scribe-Data/blob/main/CHANGELOG.md) has been updated with a description of the changes for the upcoming release and the corresponding issue (if necessary)
-
+      - name: Debug first PR check
+        run: >
+          echo "First PR: ${{ steps.first_interaction.outputs.first_pr }}"
+          
       - name: Comment PR (Not First PR)
         if: steps.first_interaction.outputs.first_pr == 'false'
         uses: thollander/actions-comment-pull-request@v2
